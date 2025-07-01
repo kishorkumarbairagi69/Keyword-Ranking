@@ -69,7 +69,7 @@ async def get_results(keywords, username, password, domain):
 
 # Streamlit Form
 with st.form("credentials_form"):
-    username = st.text_input("🔐 DSEO Username")
+    username = st.text_input("🔐 SEO Username")
     password = st.text_input("🔐 SEO Password", type="password")
     domain = st.text_input("🌐 Target Domain (e.g., pw.live)")
     uploaded_file = st.file_uploader("📤 Upload keywords.csv (100 kewyords)", type="csv")
