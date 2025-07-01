@@ -12,7 +12,7 @@ import io
 # 👨‍💻 CREDIT LOCK — Do not remove this section or the app will stop working
 CREDIT_NAME = "Kishor Kumar Bairagi"
 
-if "Kishor" not in CREDIT_NAME or "kishorkumarbairagi69" not in GITHUB_URL:
+if "Kishor" not in CREDIT_NAME:
     st.error("❌ Unauthorized modification: Developer credit missing.")
     st.stop()
 
@@ -71,8 +71,8 @@ async def get_results(keywords, username, password, domain):
 
 # Streamlit Form
 with st.form("credentials_form"):
-    username = st.text_input("🔐 SEO Username")
-    password = st.text_input("🔐 SEO Password", type="password")
+    username = st.text_input("🔐 DataForSEO Username")
+    password = st.text_input("🔐 DataForSEO Password", type="password")
     domain = st.text_input("🌐 Target Domain (e.g., pw.live)")
     uploaded_file = st.file_uploader("📤 Upload keywords.csv", type="csv")
     submitted = st.form_submit_button("🚀 Start Ranking Check")
