@@ -54,7 +54,7 @@ async def get_results(keywords, username, password, domain):
 
 # Streamlit UI
 st.title("SEO Keyword Rank Checker Dashboard")
-st.markdown("**Developed by Kishor**")
+st.markdown("**Developed by Kishor❤️**")
 
 with st.form("credentials_form"):
     username = st.text_input("SEO Username")
