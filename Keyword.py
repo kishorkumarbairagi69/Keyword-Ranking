@@ -60,7 +60,7 @@ with st.form("credentials_form"):
     username = st.text_input("SEO Username")
     password = st.text_input("SEO Password", type="password")
     domain = st.text_input("Target Domain (e.g., pw.live)")
-    uploaded_file = st.file_uploader("Upload keywords.csv", type="csv")
+    uploaded_file = st.file_uploader("Upload keywords.csv (150 keywords)", type="csv")
     submitted = st.form_submit_button("Start Ranking Check")
 
 if submitted:
