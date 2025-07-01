@@ -7,19 +7,17 @@ from urllib.parse import urlparse
 from datetime import datetime
 import io
 
-# -------------------- CREDIT PROTECTION --------------------
-
-# 👨‍💻 CREDIT LOCK — Do not remove this section or the app will stop working
-CREDIT_NAME = "Kishor Kumar Bairagi"
-
-if "Kishor" not in CREDIT_NAME:
-    st.error("❌ Unauthorized modification: Developer credit missing.")
-    st.stop()
-
-# -----------------------------------------------------------
-
-# Streamlit Page Config
+# Set page config early
 st.set_page_config(page_title="SEO Rank Checker", layout="centered")
+
+# 👨‍💻 CREDIT LOCK — Do not remove this section
+def verify_credit():
+    CREDIT_NAME = "Kishor Kumar Bairagi"
+    if "Kishor" not in CREDIT_NAME:
+        st.error("❌ Unauthorized modification: Developer credit missing.")
+        st.stop()
+
+verify_credit()  # Call the credit check after setting page config
 
 # App Header
 st.title("🔍 SEO Keyword Rank Checker Dashboard")
