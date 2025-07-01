@@ -5,10 +5,29 @@ import aiohttp
 import base64
 from urllib.parse import urlparse
 from datetime import datetime
-import csv
 import io
 
-# Constants
+# -------------------- CREDIT PROTECTION --------------------
+
+# 👨‍💻 CREDIT LOCK — Do not remove this section or the app will stop working
+CREDIT_NAME = "Kishor Kumar Bairagi"
+GITHUB_URL = "https://github.com/kishorkumarbairagi69/keyword"
+
+if "Kishor" not in CREDIT_NAME or "kishorkumarbairagi69" not in GITHUB_URL:
+    st.error("❌ Unauthorized modification: Developer credit missing.")
+    st.stop()
+
+# -----------------------------------------------------------
+
+# Streamlit Page Config
+st.set_page_config(page_title="SEO Rank Checker", layout="centered")
+
+# App Header
+st.title("🔍 SEO Keyword Rank Checker Dashboard")
+st.markdown("### 👨‍💻 Developed by **Kishor Kumar Bairagi**")
+st.markdown(f"[View on GitHub]({GITHUB_URL})")
+
+# Function to fetch data
 MAX_REQUESTS_PER_MINUTE = 2000
 CONCURRENT_REQUESTS = 200
 
@@ -52,37 +71,36 @@ async def get_results(keywords, username, password, domain):
         await asyncio.gather(*tasks)
     return results
 
-# Streamlit UI
-st.title("SEO Keyword Rank Checker Dashboard")
-st.markdown("**Developed by Kishor❤️**")
-
+# Streamlit Form
 with st.form("credentials_form"):
-    username = st.text_input("SEO Username")
-    password = st.text_input("SEO Password", type="password")
-    domain = st.text_input("Target Domain (e.g., pw.live)")
-    uploaded_file = st.file_uploader("Upload keywords.csv (150 keywords)", type="csv")
-    submitted = st.form_submit_button("Start Ranking Check")
+    username = st.text_input("🔐 DataForSEO Username")
+    password = st.text_input("🔐 DataForSEO Password", type="password")
+    domain = st.text_input("🌐 Target Domain (e.g., pw.live)")
+    uploaded_file = st.file_uploader("📤 Upload keywords.csv", type="csv")
+    submitted = st.form_submit_button("🚀 Start Ranking Check")
 
+# If form is submitted
 if submitted:
     if not (username and password and domain and uploaded_file):
-        st.error("Please fill in all fields and upload a CSV file.")
+        st.error("❗ Please fill in all fields and upload a CSV file.")
     else:
         keywords = pd.read_csv(uploaded_file, header=None)[0].tolist()
-        st.info(f"Processing {len(keywords)} keywords...")
-        with st.spinner("Fetching rankings..."):
+        st.info(f"⏳ Processing {len(keywords)} keywords...")
+        with st.spinner("📡 Fetching rankings..."):
             results = asyncio.run(get_results(keywords, username, password, domain))
             df = pd.DataFrame(results, columns=["Keyword", "Position", "URL", "Title", "Snippet"])
-            st.success("Ranking fetched!")
+            st.success("✅ Ranking fetched successfully!")
             st.dataframe(df)
 
             csv_buffer = io.StringIO()
             df.to_csv(csv_buffer, index=False)
             st.download_button(
-                label="Download Results as CSV",
+                label="⬇️ Download Results as CSV",
                 data=csv_buffer.getvalue(),
                 file_name=f'rankings_{domain}_{datetime.now().strftime("%Y%m%d_%H%M%S")}.csv',
                 mime='text/csv'
             )
-# At the bottom of app.py
+
+# Footer Credit (required to remain)
 st.markdown("---")
-st.markdown("Made with ❤️ by **Kishor**", unsafe_allow_html=True)
+st.markdown("Made with ❤️ by **Kishor Kumar Bairagi**")
