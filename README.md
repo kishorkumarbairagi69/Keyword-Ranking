@@ -30,5 +30,3 @@ This app fetches the top 100 Google search results for each keyword and identifi
 
 ---
 
-## 📁 File Structure
-
