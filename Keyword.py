@@ -11,7 +11,6 @@ import io
 
 # 👨‍💻 CREDIT LOCK — Do not remove this section or the app will stop working
 CREDIT_NAME = "Kishor Kumar Bairagi"
-GITHUB_URL = "https://github.com/kishorkumarbairagi69/keyword"
 
 if "Kishor" not in CREDIT_NAME or "kishorkumarbairagi69" not in GITHUB_URL:
     st.error("❌ Unauthorized modification: Developer credit missing.")
@@ -25,7 +24,6 @@ st.set_page_config(page_title="SEO Rank Checker", layout="centered")
 # App Header
 st.title("🔍 SEO Keyword Rank Checker Dashboard")
 st.markdown("### 👨‍💻 Developed by **Kishor Kumar Bairagi**")
-st.markdown(f"[View on GitHub]({GITHUB_URL})")
 
 # Function to fetch data
 MAX_REQUESTS_PER_MINUTE = 2000
@@ -73,8 +71,8 @@ async def get_results(keywords, username, password, domain):
 
 # Streamlit Form
 with st.form("credentials_form"):
-    username = st.text_input("🔐 DataForSEO Username")
-    password = st.text_input("🔐 DataForSEO Password", type="password")
+    username = st.text_input("🔐 SEO Username")
+    password = st.text_input("🔐 SEO Password", type="password")
     domain = st.text_input("🌐 Target Domain (e.g., pw.live)")
     uploaded_file = st.file_uploader("📤 Upload keywords.csv", type="csv")
     submitted = st.form_submit_button("🚀 Start Ranking Check")
